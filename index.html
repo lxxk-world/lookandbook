@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>💌 ถึงคุณบุ๊ค</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", sans-serif;
+      background: #f2f2f7;
+      color: #111;
+    }
+
+    .phone {
+      width: 100%;
+      max-width: 430px;
+      height: 100vh;
+      margin: auto;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      padding: 48px 18px 12px;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin: 0 auto 5px;
+      background: linear-gradient(135deg,#ffb6c9,#ff6f91);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .status {
+      font-size: 11px;
+      color: #8e8e93;
+      margin-top: 2px;
+    }
+
+    /* Chat */
+    .chat {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 14px 12px;
+      background: #fff;
+      scroll-behavior: smooth;
+    }
+
+    .message-row {
+      display: flex;
+      margin: 7px 0;
+      animation: pop .25s ease;
+    }
+
+    .message-row.me {
+      justify-content: flex-end;
+    }
+
+    .bubble {
+      max-width: 78%;
+      padding: 9px 14px;
+      border-radius: 20px;
+      font-size: 16px;
+      line-height: 1.45;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    .them .bubble {
+      background: #e9e9eb;
+      color: #111;
+      border-bottom-left-radius: 6px;
+    }
+
+    .me .bubble {
+      background: #007aff;
+      color: white;
+      border-bottom-right-radius: 6px;
+    }
+
+    .typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 9px 13px;
+      background: #e9e9eb;
+      border-radius: 18px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #777;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
+
+    .dot:nth-child(2) { animation-delay: .15s; }
+    .dot:nth-child(3) { animation-delay: .3s; }
+
+    /* Choices */
+    .choices {
+      padding: 5px 10px 10px;
+    }
+
+    .choice {
+      width: 100%;
+      border: none;
+      background: #f7f7f8;
+      border: 1px solid #e1e1e3;
+      border-radius: 14px;
+      padding: 11px 13px;
+      margin: 4px 0;
+      text-align: left;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .15s;
+    }
+
+    .choice:active {
+      transform: scale(.98);
+      background: #ececf0;
+    }
+
+    /* Input */
+    .input-area {
+      display: flex;
+      gap: 8px;
+      padding: 9px 10px 14px;
+      background: rgba(250,250,250,.97);
+      border-top: 1px solid #ddd;
+    }
+
+    input {
+      flex: 1;
+      border: 1px solid #d1d1d6;
+      border-radius: 20px;
+      padding: 10px 14px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #007aff;
+    }
+
+    .send {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: #007aff;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .send:disabled {
+      background: #c7c7cc;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="phone">
+
+  <div class="header">
+    <div class="avatar">💗</div>
+    <div class="name">คุณบุ๊ค</div>
+    <div class="status">iMessage</div>
+  </div>
+
+  <div class="chat" id="chat"></div>
+
+  <div class="choices hidden" id="choices">
+
+    <button class="choice" onclick="choose(1)">
+      1️⃣ ตอบตกลงเป็นแฟนกัน 💕
+    </button>
+
+    <button class="choice" onclick="choose(2)">
+      2️⃣ ไม่ปฏิเสธ 🥹
+    </button>
+
+    <button class="choice" onclick="choose(3)">
+      3️⃣ คบกัน start วันครบรอบใหม่ 🎂
+    </button>
+
+    <button class="choice" onclick="choose(4)">
+      4️⃣ โดนจับกุมหัวใจ 🚨💗
+    </button>
+
+    <button class="choice" onclick="choose(5)">
+      55555 หัวเราะแล้วจุ๊บเพื่อเป็นแฟนกัน 😘
+    </button>
+
+  </div>
+
+  <div class="input-area">
+    <input
+      id="messageInput"
+      type="text"
+      placeholder="iMessage"
+      autocomplete="off"
+    >
+    <button class="send" id="sendButton" onclick="sendMessage()">↑</button>
+  </div>
+
+</div>
+
+<script>
+
+const chat = document.getElementById("chat");
+const input = document.getElementById("messageInput");
+const sendButton = document.getElementById("sendButton");
+const choices = document.getElementById("choices");
+
+let step = 0;
+
+/* --------------------------------
+   ข้อความรัก
+-------------------------------- */
+
+const loveMessages = [
+  "เรามาอยู่ด้วยกันไปเรื่อย ๆ เลยนะ",
+  "เค้าอยากเดินทางไปพร้อมกับเธอในทุก ๆ ที่",
+  "อยากมีความสุขไปพร้อมกับเธอในทุก ๆ วัน",
+  "เรียนรู้และเติบโตไปพร้อมกับเธอ",
+  "ไม่ว่ามันจะยากหรือลำบากแค่ไหน\nเค้าก็จะไม่มีวันปล่อยมือเธอไปเด็ดขาด",
+  "เค้ารักเธอนะคะคุณบุ๊ค 🥹🫶🏻💕"
+];
+
+
+/* --------------------------------
+   เพิ่มข้อความ
+-------------------------------- */
+
+function addMessage(text, type = "them") {
+
+  const row = document.createElement("div");
+  row.className = "message-row " + type;
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.textContent = text;
+
+  row.appendChild(bubble);
+  chat.appendChild(row);
+
+  scrollBottom();
+}
+
+
+/* --------------------------------
+   กำลังพิมพ์
+-------------------------------- */
+
+function showTyping() {
+
+  const row = document.createElement("div");
+  row.className = "message-row them";
+  row.id = "typing";
+
+  const typing = document.createElement("div");
+  typing.className = "typing";
+
+  for (let i = 0; i < 3; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    typing.appendChild(dot);
+  }
+
+  row.appendChild(typing);
+  chat.appendChild(row);
+
+  scrollBottom();
+}
+
+
+function hideTyping() {
+
+  const typing = document.getElementById("typing");
+
+  if (typing) {
+    typing.remove();
+  }
+
+}
+
+
+/* --------------------------------
+   Scroll
+-------------------------------- */
+
+function scrollBottom() {
+  setTimeout(() => {
+    chat.scrollTop = chat.scrollHeight;
+  }, 50);
+}
+
+
+/* --------------------------------
+   เปิดหน้า
+-------------------------------- */
+
+window.onload = async function() {
+
+  await delay(700);
+
+  addMessage("ของขวัญน่ารักไหม");
+
+};
+
+
+/* --------------------------------
+   ส่งข้อความแรก
+-------------------------------- */
+
+async function sendMessage() {
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  /* แสดงข้อความที่คุณบุ๊คพิมพ์ */
+
+  addMessage(text, "me");
+
+  input.value = "";
+  sendButton.disabled = true;
+
+  await delay(700);
+
+  showTyping();
+
+  await delay(1300);
+
+  hideTyping();
+
+  addMessage(
+    "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+  );
+
+  await delay(400);
+
+  choices.classList.remove("hidden");
+
+  sendButton.disabled = true;
+  input.disabled = true;
+
+}
+
+
+/* --------------------------------
+   เลือกคำตอบ
+-------------------------------- */
+
+async function choose(number) {
+
+  choices.classList.add("hidden");
+
+  let reply = "";
+
+  switch(number) {
+
+    case 1:
+      reply = "ตกลงครับ 💕";
+      break;
+
+    case 2:
+      reply = "ปฏิเสธไม่ได้แล้วครับ 🥹";
+      break;
+
+    case 3:
+      reply = "ได้เลยครับ เริ่มวันครบรอบใหม่ของเรากันนะ 🎂💕";
+      break;
+
+    case 4:
+      reply = "ยอมให้จับกุมหัวใจแต่โดยดีครับ 🚨💗";
+      break;
+
+    case 5:
+      reply = "555555 😂 จุ๊บ 😘 ตกลงเป็นแฟนกันครับ";
+      break;
+
+  }
+
+  addMessage(reply, "me");
+
+  await delay(900);
+
+  await sendLoveSequence();
+
+}
+
+
+/* --------------------------------
+   ข้อความรักต่อเนื่อง
+-------------------------------- */
+
+async function sendLoveSequence() {
+
+  for (const message of loveMessages) {
+
+    showTyping();
+
+    await delay(1100);
+
+    hideTyping();
+
+    addMessage(message);
+
+    await delay(800);
+
+  }
+
+}
+
+
+/* --------------------------------
+   Enter = ส่ง
+-------------------------------- */
+
+input.addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+
+});
+
+
+/* --------------------------------
+   Delay
+-------------------------------- */
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+</script>
+
+</body>
+</html>
