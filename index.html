@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -9,6 +11,7 @@
   >
 
   <title>To BOOK</title>
+
 
   <style>
 
@@ -65,46 +68,24 @@
 
 
     /* =====================================================
-       HEART LAYER
-    ===================================================== */
-
-    .heart-layer {
-      position: absolute;
-
-      inset: 0;
-
-      overflow: hidden;
-
-      pointer-events: none;
-
-      z-index: 100;
-    }
-
-
-    /* =====================================================
        HEADER
     ===================================================== */
 
     .header {
       flex-shrink: 0;
 
-      padding:
-        48px
-        18px
-        12px;
+      padding: 48px 18px 12px;
 
-      background:
-        rgba(255,255,255,.97);
+      background: rgba(255,255,255,.97);
 
-      border-bottom:
-        1px solid #ddd;
+      border-bottom: 1px solid #ddd;
 
       text-align: center;
 
       position: relative;
-
       z-index: 10;
     }
+
 
     .avatar {
       width: 42px;
@@ -112,8 +93,7 @@
 
       border-radius: 50%;
 
-      margin:
-        0 auto 5px;
+      margin: 0 auto 5px;
 
       background:
         linear-gradient(
@@ -129,10 +109,12 @@
       font-size: 22px;
     }
 
+
     .name {
       font-size: 16px;
       font-weight: 600;
     }
+
 
     .status {
       font-size: 11px;
@@ -154,10 +136,7 @@
 
       overflow-y: auto;
 
-      padding:
-        18px
-        14px
-        12px;
+      padding: 18px 14px 12px;
 
       background: #fff;
 
@@ -168,30 +147,28 @@
       z-index: 2;
     }
 
+
     .message-row {
       display: flex;
 
-      margin:
-        7px 0;
+      margin: 7px 0;
 
-      animation:
-        pop .25s ease;
+      animation: pop .25s ease;
 
       position: relative;
-
       z-index: 3;
     }
+
 
     .message-row.me {
       justify-content: flex-end;
     }
 
+
     .bubble {
       max-width: 78%;
 
-      padding:
-        9px
-        14px;
+      padding: 9px 14px;
 
       border-radius: 20px;
 
@@ -204,6 +181,7 @@
       word-break: break-word;
     }
 
+
     .them .bubble {
       background: #e9e9eb;
 
@@ -211,6 +189,7 @@
 
       border-bottom-left-radius: 6px;
     }
+
 
     .me .bubble {
       background: #007aff;
@@ -232,14 +211,13 @@
 
       gap: 4px;
 
-      padding:
-        9px
-        13px;
+      padding: 9px 13px;
 
       background: #e9e9eb;
 
       border-radius: 18px;
     }
+
 
     .dot {
       width: 6px;
@@ -249,13 +227,14 @@
 
       border-radius: 50%;
 
-      animation:
-        bounce 1.2s infinite;
+      animation: bounce 1.2s infinite;
     }
+
 
     .dot:nth-child(2) {
       animation-delay: .15s;
     }
+
 
     .dot:nth-child(3) {
       animation-delay: .3s;
@@ -269,10 +248,7 @@
     .choices {
       flex-shrink: 0;
 
-      padding:
-        5px
-        10px
-        10px;
+      padding: 5px 10px 10px;
 
       background: #fff;
 
@@ -281,22 +257,19 @@
       z-index: 10;
     }
 
+
     .choice {
       width: 100%;
 
-      border:
-        1px solid #e1e1e3;
+      border: 1px solid #e1e1e3;
 
       background: #f7f7f8;
 
       border-radius: 14px;
 
-      padding:
-        11px
-        13px;
+      padding: 11px 13px;
 
-      margin:
-        4px 0;
+      margin: 4px 0;
 
       text-align: left;
 
@@ -308,6 +281,7 @@
         transform .15s,
         background .15s;
     }
+
 
     .choice:active {
       transform: scale(.98);
@@ -327,35 +301,28 @@
 
       gap: 8px;
 
-      padding:
-        9px
-        10px
-        14px;
+      padding: 9px 10px 14px;
 
-      background:
-        rgba(250,250,250,.97);
+      background: rgba(250,250,250,.97);
 
-      border-top:
-        1px solid #ddd;
+      border-top: 1px solid #ddd;
 
       position: relative;
 
       z-index: 10;
     }
 
+
     input {
       flex: 1;
 
       min-width: 0;
 
-      border:
-        1px solid #d1d1d6;
+      border: 1px solid #d1d1d6;
 
       border-radius: 20px;
 
-      padding:
-        10px
-        14px;
+      padding: 10px 14px;
 
       font-size: 16px;
 
@@ -364,15 +331,18 @@
       background: #fff;
     }
 
+
     input:focus {
       border-color: #007aff;
     }
+
 
     input:disabled {
       background: #f2f2f7;
 
       color: #8e8e93;
     }
+
 
     .send {
       width: 42px;
@@ -393,11 +363,13 @@
       cursor: pointer;
     }
 
+
     .send:disabled {
       background: #c7c7cc;
 
       cursor: default;
     }
+
 
     .hidden {
       display: none !important;
@@ -405,8 +377,21 @@
 
 
     /* =====================================================
-       FLOATING HEART
+       FLOATING HEARTS
     ===================================================== */
+
+    .heart-layer {
+      position: absolute;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+      z-index: 100;
+    }
+
 
     .floating-heart {
       position: absolute;
@@ -442,9 +427,11 @@
           rotate(0deg);
       }
 
+
       8% {
         opacity: 1;
       }
+
 
       45% {
         opacity: 1;
@@ -459,9 +446,11 @@
           rotate(var(--rotate));
       }
 
+
       75% {
         opacity: .9;
       }
+
 
       100% {
         opacity: 0;
@@ -479,11 +468,12 @@
             )
           );
       }
+
     }
 
 
     /* =====================================================
-       NORMAL ANIMATION
+       ANIMATIONS
     ===================================================== */
 
     @keyframes pop {
@@ -495,6 +485,7 @@
           translateY(8px)
           scale(.98);
       }
+
 
       to {
         opacity: 1;
@@ -516,6 +507,7 @@
           translateY(0);
       }
 
+
       30% {
         transform:
           translateY(-4px);
@@ -524,6 +516,7 @@
     }
 
   </style>
+
 </head>
 
 
@@ -590,12 +583,14 @@
       กด 1️⃣ เพื่อตอบตกลงเป็นแฟนกัน
     </button>
 
+
     <button
       class="choice"
       onclick="choose(2)"
     >
       กด 2️⃣ เพื่อไม่ปฏิเสธ 🥹
     </button>
+
 
     <button
       class="choice"
@@ -604,12 +599,14 @@
       กด 3️⃣ เพื่อคบกัน start วันครบรอบใหม่ 💕
     </button>
 
+
     <button
       class="choice"
       onclick="choose(4)"
     >
       กด 4️⃣ เพื่อโดนจับกุมหัวใจ 🚨
     </button>
+
 
     <button
       class="choice"
@@ -634,6 +631,7 @@
       autocomplete="off"
     >
 
+
     <button
       class="send"
       id="sendButton"
@@ -648,6 +646,7 @@
 </div>
 
 
+
 <script>
 
 
@@ -660,20 +659,24 @@ const chat =
     "chat"
   );
 
+
 const input =
   document.getElementById(
     "messageInput"
   );
+
 
 const sendButton =
   document.getElementById(
     "sendButton"
   );
 
+
 const choices =
   document.getElementById(
     "choices"
   );
+
 
 const heartLayer =
   document.getElementById(
@@ -692,7 +695,7 @@ let conversationStage =
 
 
 /* =========================================================
-   LOVE MESSAGES
+   LOVE SEQUENCE
 ========================================================= */
 
 const loveMessages = [
@@ -713,23 +716,79 @@ const loveMessages = [
 
 
 /* =========================================================
-   DELAY ของแต่ละ LOVE MESSAGE
+   LOVE DELAYS
+
+   หน่วงก่อนแต่ละข้อความ
 ========================================================= */
 
 const loveDelays = [
 
-  5000,  // 1. เรามาอยู่ด้วยกัน...
-  4000,  // 2. เค้าอยากเดินทาง...
-  5000,  // 3. อยากมีความสุข...
-  6000,  // 4. เรียนรู้และเติบโต...
-  5000,  // 5. ไม่ว่ามันจะยาก...
-  7000   // 6. เค้ารักเธอ...
+  5000,  // 1
+  4000,  // 2
+  5000,  // 3
+  6000,  // 4
+  5000,  // 5
+  7000   // 6
 
 ];
 
 
 /* =========================================================
-   RANDOM REPLIES
+   GIFT REJECTION KEYWORDS
+
+   ใช้เฉพาะตอนถาม
+   "ของขวัญน่ารักไหม"
+========================================================= */
+
+const rejectionKeywords = [
+
+  "ไม่",
+
+  "ไม่น่ารัก",
+
+  "ไม่นะ",
+
+  "ไม่เอา",
+
+  "ไม่ชอบ",
+
+  "ไม่ถูกใจ",
+
+  "ไม่สวย",
+
+  "ไม่เห็นน่ารัก",
+
+  "ไม่น่ารักเลย",
+
+  "เฉยๆ",
+
+  "เฉย ๆ",
+
+  "เฉย",
+
+  "งั้นๆ",
+
+  "งั้น ๆ",
+
+  "ไม่ค่อย",
+
+  "ไม่อ่ะ",
+
+  "ไม่อะ",
+
+  "ไม่ค้าบ",
+
+  "ไม่จ้า",
+
+  "no",
+
+  "nope"
+
+];
+
+
+/* =========================================================
+   REPLIES
 ========================================================= */
 
 const noReplies = [
@@ -817,7 +876,9 @@ const heartEmojis = [
    RANDOM
 ========================================================= */
 
-function randomReply(array) {
+function randomReply(
+  array
+) {
 
   return array[
     Math.floor(
@@ -852,12 +913,14 @@ function delay(ms) {
 
 function scrollBottom() {
 
-  requestAnimationFrame(() => {
+  requestAnimationFrame(
+    () => {
 
-    chat.scrollTop =
-      chat.scrollHeight;
+      chat.scrollTop =
+        chat.scrollHeight;
 
-  });
+    }
+  );
 
 }
 
@@ -876,6 +939,7 @@ function addMessage(
       "div"
     );
 
+
   row.className =
     "message-row " +
     type;
@@ -885,6 +949,7 @@ function addMessage(
     document.createElement(
       "div"
     );
+
 
   bubble.className =
     "bubble";
@@ -923,8 +988,10 @@ function showTyping() {
       "div"
     );
 
+
   row.className =
     "message-row them";
+
 
   row.id =
     "typing";
@@ -934,6 +1001,7 @@ function showTyping() {
     document.createElement(
       "div"
     );
+
 
   typing.className =
     "typing";
@@ -949,6 +1017,7 @@ function showTyping() {
       document.createElement(
         "div"
       );
+
 
     dot.className =
       "dot";
@@ -994,7 +1063,7 @@ function hideTyping() {
 
 
 /* =========================================================
-   INPUT ENABLE / DISABLE
+   INPUT CONTROL
 ========================================================= */
 
 function setInputEnabled(
@@ -1004,6 +1073,7 @@ function setInputEnabled(
   input.disabled =
     !enabled;
 
+
   sendButton.disabled =
     !enabled;
 
@@ -1011,15 +1081,17 @@ function setInputEnabled(
 
 
 /* =========================================================
-   FLOATING HEARTS
+   HEARTS
 ========================================================= */
 
 function createFloatingHearts() {
 
-  heartLayer.innerHTML = "";
+  heartLayer.innerHTML =
+    "";
 
 
-  const heartCount = 90;
+  const heartCount =
+    90;
 
 
   for (
@@ -1028,98 +1100,104 @@ function createFloatingHearts() {
     i++
   ) {
 
-    setTimeout(() => {
+    setTimeout(
+      () => {
 
-      const heart =
-        document.createElement(
-          "div"
+        const heart =
+          document.createElement(
+            "div"
+          );
+
+
+        heart.className =
+          "floating-heart";
+
+
+        heart.textContent =
+          randomReply(
+            heartEmojis
+          );
+
+
+        const left =
+          Math.random() * 100;
+
+
+        const drift =
+          -140 +
+          Math.random() * 280;
+
+
+        const driftEnd =
+          -180 +
+          Math.random() * 360;
+
+
+        const size =
+          18 +
+          Math.random() * 26;
+
+
+        const duration =
+          2.8 +
+          Math.random() * 2.4;
+
+
+        const rotate =
+          -35 +
+          Math.random() * 70;
+
+
+        heart.style.left =
+          left + "%";
+
+
+        heart.style.fontSize =
+          size + "px";
+
+
+        heart.style.setProperty(
+          "--drift",
+          drift + "px"
         );
 
 
-      heart.className =
-        "floating-heart";
-
-
-      heart.textContent =
-        randomReply(
-          heartEmojis
+        heart.style.setProperty(
+          "--drift-end",
+          driftEnd + "px"
         );
 
 
-      const left =
-        Math.random() * 100;
+        heart.style.setProperty(
+          "--duration",
+          duration + "s"
+        );
 
 
-      const drift =
-        -140 +
-        Math.random() * 280;
+        heart.style.setProperty(
+          "--rotate",
+          rotate + "deg"
+        );
 
 
-      const driftEnd =
-        -180 +
-        Math.random() * 360;
+        heartLayer.appendChild(
+          heart
+        );
 
 
-      const size =
-        18 +
-        Math.random() * 26;
+        setTimeout(
+          () => {
+
+            heart.remove();
+
+          },
+          duration * 1000 + 500
+        );
 
 
-      const duration =
-        2.8 +
-        Math.random() * 2.4;
-
-
-      const rotate =
-        -35 +
-        Math.random() * 70;
-
-
-      heart.style.left =
-        left + "%";
-
-
-      heart.style.fontSize =
-        size + "px";
-
-
-      heart.style.setProperty(
-        "--drift",
-        drift + "px"
-      );
-
-
-      heart.style.setProperty(
-        "--drift-end",
-        driftEnd + "px"
-      );
-
-
-      heart.style.setProperty(
-        "--duration",
-        duration + "s"
-      );
-
-
-      heart.style.setProperty(
-        "--rotate",
-        rotate + "deg"
-      );
-
-
-      heartLayer.appendChild(
-        heart
-      );
-
-
-      setTimeout(() => {
-
-        heart.remove();
-
-      }, duration * 1000 + 500);
-
-
-    }, i * 40);
+      },
+      i * 40
+    );
 
   }
 
@@ -1164,6 +1242,36 @@ async function startConversation() {
 
 
 /* =========================================================
+   CHECK GIFT REJECTION
+========================================================= */
+
+function isGiftRejection(
+  normalized
+) {
+
+  return rejectionKeywords.some(
+    keyword => {
+
+      const cleanKeyword =
+        keyword
+          .replace(
+            /\s+/g,
+            ""
+          )
+          .toLowerCase();
+
+
+      return normalized.includes(
+        cleanKeyword
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
    SEND MESSAGE
 ========================================================= */
 
@@ -1192,7 +1300,8 @@ async function sendMessage() {
   );
 
 
-  input.value = "";
+  input.value =
+    "";
 
 
   setInputEnabled(
@@ -1223,14 +1332,16 @@ async function sendMessage() {
   ) {
 
     if (
-      normalized.includes(
-        "ไม่" , "no"
+      isGiftRejection(
+        normalized
       )
     ) {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1240,21 +1351,28 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
+
       input.focus();
 
+
       return;
+
     }
 
 
     showTyping();
 
+
     await delay(1000);
+
 
     hideTyping();
 
@@ -1276,15 +1394,18 @@ async function sendMessage() {
       "proposal";
 
 
-    isProcessing = false;
+    isProcessing =
+      false;
+
 
     return;
+
   }
 
 
   /* =======================================================
      STAGE 2
-     ช่วงขอเป็นแฟน
+     ก่อนเริ่ม LOVE SEQUENCE
   ======================================================= */
 
   if (
@@ -1300,7 +1421,9 @@ async function sendMessage() {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1312,15 +1435,20 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
+
       input.focus();
 
+
       return;
+
     }
 
 
@@ -1332,7 +1460,9 @@ async function sendMessage() {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1344,15 +1474,20 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
+
       input.focus();
 
+
       return;
+
     }
 
 
@@ -1364,7 +1499,9 @@ async function sendMessage() {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1376,163 +1513,22 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
-      input.focus();
-
-      return;
-    }
-
-
-    showTyping();
-
-    await delay(1000);
-
-    hideTyping();
-
-
-    addMessage(
-      "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
-    );
-
-
-    isProcessing = false;
-
-    setInputEnabled(
-      true
-    );
-
-    input.focus();
-
-    return;
-  }
-
-
-  /* =======================================================
-     STAGE 3
-     หลังข้อความสุดท้าย
-  ======================================================= */
-
-  if (
-    conversationStage ===
-    "relationship"
-  ) {
-
-    /*
-      1. มีคำว่า ไม่
-    */
-
-    if (
-      normalized.includes(
-        "ไม่"
-      )
-    ) {
-
-      showTyping();
-
-      await delay(1000);
-
-      hideTyping();
-
-
-      addMessage(
-        randomReply(
-          noReplies
-        )
-      );
-
-
-      isProcessing = false;
-
-      setInputEnabled(
-        true
-      );
 
       input.focus();
 
-      return;
-    }
-
-
-    /*
-      2. มีคำว่า รัก
-    */
-
-    if (
-      normalized.includes(
-        "รัก"
-      )
-    ) {
-
-      showTyping();
-
-      await delay(1000);
-
-      hideTyping();
-
-
-      addMessage(
-        randomReply(
-          loveReplies
-        )
-      );
-
-
-      isProcessing = false;
-
-      setInputEnabled(
-        true
-      );
-
-      input.focus();
 
       return;
+
     }
 
-
-    /*
-      3. มีคำว่า ค้าบ
-    */
-
-    if (
-      normalized.includes(
-        "ค้าบ"
-      )
-    ) {
-
-      showTyping();
-
-      await delay(1000);
-
-      hideTyping();
-
-
-      addMessage(
-        randomReply(
-          kaabReplies
-        )
-      );
-
-
-      isProcessing = false;
-
-      setInputEnabled(
-        true
-      );
-
-      input.focus();
-
-      return;
-    }
-
-
-    /*
-      4. พุ่นหนะ / ป๊าด
-    */
 
     if (
       normalized.includes(
@@ -1545,7 +1541,9 @@ async function sendMessage() {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1557,21 +1555,22 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
+
       input.focus();
 
+
       return;
+
     }
 
-
-    /*
-      5. จ้า
-    */
 
     if (
       normalized.includes(
@@ -1581,7 +1580,9 @@ async function sendMessage() {
 
       showTyping();
 
+
       await delay(1000);
+
 
       hideTyping();
 
@@ -1593,25 +1594,28 @@ async function sendMessage() {
       );
 
 
-      isProcessing = false;
+      isProcessing =
+        false;
+
 
       setInputEnabled(
         true
       );
 
+
       input.focus();
 
+
       return;
+
     }
 
 
-    /*
-      6. อื่น ๆ
-    */
-
     showTyping();
 
+
     await delay(1000);
+
 
     hideTyping();
 
@@ -1621,15 +1625,271 @@ async function sendMessage() {
     );
 
 
-    isProcessing = false;
+    isProcessing =
+      false;
+
 
     setInputEnabled(
       true
     );
 
+
     input.focus();
 
+
     return;
+
+  }
+
+
+  /* =======================================================
+     STAGE 3
+     หลังจบ LOVE SEQUENCE
+  ======================================================= */
+
+  if (
+    conversationStage ===
+    "relationship"
+  ) {
+
+    /* 1. ไม่ */
+
+    if (
+      normalized.includes(
+        "ไม่"
+      )
+    ) {
+
+      showTyping();
+
+
+      await delay(1000);
+
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          noReplies
+        )
+      );
+
+
+      isProcessing =
+        false;
+
+
+      setInputEnabled(
+        true
+      );
+
+
+      input.focus();
+
+
+      return;
+
+    }
+
+
+    /* 2. รัก */
+
+    if (
+      normalized.includes(
+        "รัก"
+      )
+    ) {
+
+      showTyping();
+
+
+      await delay(1000);
+
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          loveReplies
+        )
+      );
+
+
+      isProcessing =
+        false;
+
+
+      setInputEnabled(
+        true
+      );
+
+
+      input.focus();
+
+
+      return;
+
+    }
+
+
+    /* 3. ค้าบ */
+
+    if (
+      normalized.includes(
+        "ค้าบ"
+      )
+    ) {
+
+      showTyping();
+
+
+      await delay(1000);
+
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          kaabReplies
+        )
+      );
+
+
+      isProcessing =
+        false;
+
+
+      setInputEnabled(
+        true
+      );
+
+
+      input.focus();
+
+
+      return;
+
+    }
+
+
+    /* 4. พุ่นหนะ / ป๊าด */
+
+    if (
+      normalized.includes(
+        "พุ่นหนะ"
+      ) ||
+      normalized.includes(
+        "ป๊าด"
+      )
+    ) {
+
+      showTyping();
+
+
+      await delay(1000);
+
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          punReplies
+        )
+      );
+
+
+      isProcessing =
+        false;
+
+
+      setInputEnabled(
+        true
+      );
+
+
+      input.focus();
+
+
+      return;
+
+    }
+
+
+    /* 5. จ้า */
+
+    if (
+      normalized.includes(
+        "จ้า"
+      )
+    ) {
+
+      showTyping();
+
+
+      await delay(1000);
+
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          jaReplies
+        )
+      );
+
+
+      isProcessing =
+        false;
+
+
+      setInputEnabled(
+        true
+      );
+
+
+      input.focus();
+
+
+      return;
+
+    }
+
+
+    /* 6. อื่น ๆ */
+
+    showTyping();
+
+
+    await delay(1000);
+
+
+    hideTyping();
+
+
+    addMessage(
+      "อะไรนะ ไม่รู้เหลือง พิมพ์มาใหม่สิ้"
+    );
+
+
+    isProcessing =
+      false;
+
+
+    setInputEnabled(
+      true
+    );
+
+
+    input.focus();
+
+
+    return;
+
   }
 
 }
@@ -1648,7 +1908,8 @@ async function choose(
   }
 
 
-  isProcessing = true;
+  isProcessing =
+    true;
 
 
   choices.classList.add(
@@ -1656,7 +1917,8 @@ async function choose(
   );
 
 
-  let reply = "";
+  let reply =
+    "";
 
 
   switch (number) {
@@ -1722,15 +1984,11 @@ async function choose(
     i++
   ) {
 
-    /*
-      แสดง typing
-    */
-
     showTyping();
 
 
     /*
-      ใช้ delay ของแต่ละข้อความ
+      หน่วงตามเวลาของแต่ละข้อความ
     */
 
     await delay(
@@ -1741,17 +1999,13 @@ async function choose(
     hideTyping();
 
 
-    /*
-      แสดงข้อความ
-    */
-
     addMessage(
       loveMessages[i]
     );
 
 
     /*
-      ถ้าเป็นข้อความสุดท้าย
+      ข้อความสุดท้าย
     */
 
     if (
@@ -1762,33 +2016,10 @@ async function choose(
       await delay(250);
 
 
-      /*
-        หัวใจลอยเต็มจอ
-      */
-
       createFloatingHearts();
 
 
-      /*
-        รอให้หัวใจเริ่ม animation
-      */
-
       await delay(1800);
-
-    }
-
-
-    /*
-      เว้นจังหวะเล็กน้อย
-      ก่อนเริ่มข้อความถัดไป
-    */
-
-    if (
-      i <
-      loveMessages.length - 1
-    ) {
-
-      await delay(500);
 
     }
 
@@ -1796,14 +2027,15 @@ async function choose(
 
 
   /*
-    เปิดระบบตอบกลับหลังจบ
+    เปิดระบบตอบกลับ
   */
 
   conversationStage =
     "relationship";
 
 
-  isProcessing = false;
+  isProcessing =
+    false;
 
 
   setInputEnabled(
@@ -1848,5 +2080,7 @@ startConversation();
 
 </script>
 
+
 </body>
+
 </html>
