@@ -487,5 +487,134 @@ function delay(ms) {
 
 </script>
 
+  <script>
+async function sendMessage() {
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  addMessage(text, "me");
+
+  input.value = "";
+  sendButton.disabled = true;
+
+  await delay(700);
+
+  const normalized = text.replace(/\s+/g, "");
+
+  /* =========================
+     กรณีตอบว่า "ไม่รัก"
+  ========================= */
+
+  if (normalized.includes("ไม่รัก")) {
+
+    showTyping();
+
+    await delay(1200);
+
+    hideTyping();
+
+    addMessage(
+      "ไม่จริง\nอ้วนหลอกเค้า\nแงงงงง ใจร้าย 😭\nไม่รักไม่ได้ รักได้อย่างเดียว"
+    );
+
+    sendButton.disabled = false;
+    input.disabled = false;
+
+    return;
+  }
+
+
+  /* =========================
+     กรณีตอบว่า "ไม่คบ"
+  ========================= */
+
+  if (normalized.includes("ไม่คบ")) {
+
+    showTyping();
+
+    await delay(1200);
+
+    hideTyping();
+
+    addMessage(
+      "ไม่เอาาาา 🥹\nไม่คบไม่ได้ รักแล้วต้องคบสิคะ 🤏🏻💕"
+    );
+
+    sendButton.disabled = false;
+    input.disabled = false;
+
+    return;
+  }
+
+
+  /* =========================
+     กรณีมีคำว่า "รัก"
+     แต่ไม่ใช่ "ไม่รัก"
+  ========================= */
+
+  if (normalized.includes("รัก")) {
+
+    showTyping();
+
+    await delay(1200);
+
+    hideTyping();
+
+    addMessage(
+      "รักอ้วนเหมือนกันค้าบ ที่สุดเลย 🥹🫶🏻💕"
+    );
+
+    await delay(900);
+
+    /*
+      จากตรงนี้จะให้ไปต่อเข้าคำถาม
+      ขอเป็นแฟนไหม
+    */
+
+    showTyping();
+
+    await delay(1200);
+
+    hideTyping();
+
+    addMessage(
+      "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+    );
+
+    await delay(400);
+
+    choices.classList.remove("hidden");
+
+    input.disabled = true;
+
+    return;
+  }
+
+
+  /* =========================
+     คำตอบทั่วไป
+  ========================= */
+
+  showTyping();
+
+  await delay(1300);
+
+  hideTyping();
+
+  addMessage(
+    "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+  );
+
+  await delay(400);
+
+  choices.classList.remove("hidden");
+
+  input.disabled = true;
+}
+</script>
+
+
 </body>
 </html>
