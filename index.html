@@ -2,53 +2,130 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>💌 ถึงคุณบุ๊ค</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  >
+
+  <title>To BOOK</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
     }
 
+    html,
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                   "Segoe UI", sans-serif;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+
       background: #f2f2f7;
       color: #111;
+
+      overflow: hidden;
     }
+
+
+    /* =====================================================
+       PHONE
+    ===================================================== */
 
     .phone {
       width: 100%;
       max-width: 430px;
-      height: 100vh;
-      margin: auto;
+
+      height: 100dvh;
+      min-height: 100vh;
+
+      margin: 0 auto;
+
       background: #fff;
+
       display: flex;
       flex-direction: column;
+
       overflow: hidden;
+
+      position: relative;
     }
 
-    /* Header */
+
+    /* =====================================================
+       HEART LAYER
+    ===================================================== */
+
+    .heart-layer {
+      position: absolute;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+      z-index: 100;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
     .header {
-      padding: 48px 18px 12px;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid #ddd;
+      flex-shrink: 0;
+
+      padding:
+        48px
+        18px
+        12px;
+
+      background:
+        rgba(255,255,255,.97);
+
+      border-bottom:
+        1px solid #ddd;
+
       text-align: center;
+
       position: relative;
-      z-index: 2;
+
+      z-index: 10;
     }
 
     .avatar {
       width: 42px;
       height: 42px;
+
       border-radius: 50%;
-      margin: 0 auto 5px;
-      background: linear-gradient(135deg,#ffb6c9,#ff6f91);
+
+      margin:
+        0 auto 5px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ffb6c9,
+          #ff6f91
+        );
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 22px;
     }
 
@@ -59,23 +136,50 @@
 
     .status {
       font-size: 11px;
+
       color: #8e8e93;
+
       margin-top: 2px;
     }
 
-    /* Chat */
+
+    /* =====================================================
+       CHAT
+    ===================================================== */
+
     .chat {
       flex: 1;
+
+      min-height: 0;
+
       overflow-y: auto;
-      padding: 18px 14px 12px;
+
+      padding:
+        18px
+        14px
+        12px;
+
       background: #fff;
+
       scroll-behavior: smooth;
+
+      position: relative;
+
+      z-index: 2;
     }
 
     .message-row {
       display: flex;
-      margin: 7px 0;
-      animation: pop .25s ease;
+
+      margin:
+        7px 0;
+
+      animation:
+        pop .25s ease;
+
+      position: relative;
+
+      z-index: 3;
     }
 
     .message-row.me {
@@ -84,534 +188,1665 @@
 
     .bubble {
       max-width: 78%;
-      padding: 9px 14px;
+
+      padding:
+        9px
+        14px;
+
       border-radius: 20px;
+
       font-size: 16px;
+
       line-height: 1.45;
+
       white-space: pre-line;
+
       word-break: break-word;
     }
 
     .them .bubble {
       background: #e9e9eb;
+
       color: #111;
+
       border-bottom-left-radius: 6px;
     }
 
     .me .bubble {
       background: #007aff;
+
       color: white;
+
       border-bottom-right-radius: 6px;
     }
 
+
+    /* =====================================================
+       TYPING
+    ===================================================== */
+
     .typing {
       display: inline-flex;
+
       align-items: center;
+
       gap: 4px;
-      padding: 9px 13px;
+
+      padding:
+        9px
+        13px;
+
       background: #e9e9eb;
+
       border-radius: 18px;
     }
 
     .dot {
       width: 6px;
       height: 6px;
+
       background: #777;
+
       border-radius: 50%;
-      animation: bounce 1.2s infinite;
+
+      animation:
+        bounce 1.2s infinite;
     }
 
-    .dot:nth-child(2) { animation-delay: .15s; }
-    .dot:nth-child(3) { animation-delay: .3s; }
+    .dot:nth-child(2) {
+      animation-delay: .15s;
+    }
 
-    /* Choices */
+    .dot:nth-child(3) {
+      animation-delay: .3s;
+    }
+
+
+    /* =====================================================
+       CHOICES
+    ===================================================== */
+
     .choices {
-      padding: 5px 10px 10px;
+      flex-shrink: 0;
+
+      padding:
+        5px
+        10px
+        10px;
+
+      background: #fff;
+
+      position: relative;
+
+      z-index: 10;
     }
 
     .choice {
       width: 100%;
-      border: none;
+
+      border:
+        1px solid #e1e1e3;
+
       background: #f7f7f8;
-      border: 1px solid #e1e1e3;
+
       border-radius: 14px;
-      padding: 11px 13px;
-      margin: 4px 0;
+
+      padding:
+        11px
+        13px;
+
+      margin:
+        4px 0;
+
       text-align: left;
+
       font-size: 15px;
+
       cursor: pointer;
-      transition: .15s;
+
+      transition:
+        transform .15s,
+        background .15s;
     }
 
     .choice:active {
       transform: scale(.98);
+
       background: #ececf0;
     }
 
-    /* Input */
+
+    /* =====================================================
+       INPUT
+    ===================================================== */
+
     .input-area {
+      flex-shrink: 0;
+
       display: flex;
+
       gap: 8px;
-      padding: 9px 10px 14px;
-      background: rgba(250,250,250,.97);
-      border-top: 1px solid #ddd;
+
+      padding:
+        9px
+        10px
+        14px;
+
+      background:
+        rgba(250,250,250,.97);
+
+      border-top:
+        1px solid #ddd;
+
+      position: relative;
+
+      z-index: 10;
     }
 
     input {
       flex: 1;
-      border: 1px solid #d1d1d6;
+
+      min-width: 0;
+
+      border:
+        1px solid #d1d1d6;
+
       border-radius: 20px;
-      padding: 10px 14px;
+
+      padding:
+        10px
+        14px;
+
       font-size: 16px;
+
       outline: none;
+
+      background: #fff;
     }
 
     input:focus {
       border-color: #007aff;
     }
 
+    input:disabled {
+      background: #f2f2f7;
+
+      color: #8e8e93;
+    }
+
     .send {
       width: 42px;
       height: 42px;
+
+      flex-shrink: 0;
+
       border: none;
+
       border-radius: 50%;
+
       background: #007aff;
+
       color: white;
+
       font-size: 20px;
+
       cursor: pointer;
     }
 
     .send:disabled {
       background: #c7c7cc;
+
+      cursor: default;
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
+
+
+    /* =====================================================
+       FLOATING HEART
+    ===================================================== */
+
+    .floating-heart {
+      position: absolute;
+
+      bottom: 55px;
+
+      pointer-events: none;
+
+      user-select: none;
+
+      opacity: 0;
+
+      animation:
+        heartFloat
+        var(--duration)
+        cubic-bezier(.2,.8,.3,1)
+        forwards;
+    }
+
+
+    @keyframes heartFloat {
+
+      0% {
+        opacity: 0;
+
+        transform:
+          translate3d(
+            0,
+            30px,
+            0
+          )
+          scale(.35)
+          rotate(0deg);
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      45% {
+        opacity: 1;
+
+        transform:
+          translate3d(
+            var(--drift),
+            -300px,
+            0
+          )
+          scale(1)
+          rotate(var(--rotate));
+      }
+
+      75% {
+        opacity: .9;
+      }
+
+      100% {
+        opacity: 0;
+
+        transform:
+          translate3d(
+            var(--drift-end),
+            -720px,
+            0
+          )
+          scale(.75)
+          rotate(
+            calc(
+              var(--rotate) * -1
+            )
+          );
+      }
+    }
+
+
+    /* =====================================================
+       NORMAL ANIMATION
+    ===================================================== */
 
     @keyframes pop {
+
       from {
         opacity: 0;
-        transform: translateY(8px) scale(.98);
+
+        transform:
+          translateY(8px)
+          scale(.98);
       }
+
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+          translateY(0)
+          scale(1);
       }
+
     }
 
+
     @keyframes bounce {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-4px); }
+
+      0%,
+      60%,
+      100% {
+        transform:
+          translateY(0);
+      }
+
+      30% {
+        transform:
+          translateY(-4px);
+      }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
 
 <div class="phone">
 
+
+  <!-- ===================================================
+       HEART LAYER
+  ==================================================== -->
+
+  <div
+    class="heart-layer"
+    id="heartLayer"
+  ></div>
+
+
+  <!-- ===================================================
+       HEADER
+  ==================================================== -->
+
   <div class="header">
-    <div class="avatar">💗</div>
-    <div class="name">คุณบุ๊ค</div>
-    <div class="status">iMessage</div>
-  </div>
 
-  <div class="chat" id="chat"></div>
+    <div class="avatar">
+      😍
+    </div>
 
-  <div class="choices hidden" id="choices">
+    <div class="name">
+      LOOKPAD
+    </div>
 
-    <button class="choice" onclick="choose(1)">
-      1️⃣ ตอบตกลงเป็นแฟนกัน 💕
-    </button>
-
-    <button class="choice" onclick="choose(2)">
-      2️⃣ ไม่ปฏิเสธ 🥹
-    </button>
-
-    <button class="choice" onclick="choose(3)">
-      3️⃣ คบกัน start วันครบรอบใหม่ 🎂
-    </button>
-
-    <button class="choice" onclick="choose(4)">
-      4️⃣ โดนจับกุมหัวใจ 🚨💗
-    </button>
-
-    <button class="choice" onclick="choose(5)">
-      55555 หัวเราะแล้วจุ๊บเพื่อเป็นแฟนกัน 😘
-    </button>
+    <div class="status">
+      iMessage
+    </div>
 
   </div>
+
+
+  <!-- ===================================================
+       CHAT
+  ==================================================== -->
+
+  <div
+    class="chat"
+    id="chat"
+  ></div>
+
+
+  <!-- ===================================================
+       CHOICES
+  ==================================================== -->
+
+  <div
+    class="choices hidden"
+    id="choices"
+  >
+
+    <button
+      class="choice"
+      onclick="choose(1)"
+    >
+      กด 1️⃣ เพื่อตอบตกลงเป็นแฟนกัน
+    </button>
+
+    <button
+      class="choice"
+      onclick="choose(2)"
+    >
+      กด 2️⃣ เพื่อไม่ปฏิเสธ 🥹
+    </button>
+
+    <button
+      class="choice"
+      onclick="choose(3)"
+    >
+      กด 3️⃣ เพื่อคบกัน start วันครบรอบใหม่ 💕
+    </button>
+
+    <button
+      class="choice"
+      onclick="choose(4)"
+    >
+      กด 4️⃣ เพื่อโดนจับกุมหัวใจ 🚨
+    </button>
+
+    <button
+      class="choice"
+      onclick="choose(5)"
+    >
+      กด 55555 เพื่อหัวเราะแล้วจุ๊บเพื่อเป็นแฟนกัน 😘
+    </button>
+
+  </div>
+
+
+  <!-- ===================================================
+       INPUT
+  ==================================================== -->
 
   <div class="input-area">
+
     <input
       id="messageInput"
       type="text"
       placeholder="iMessage"
       autocomplete="off"
     >
-    <button class="send" id="sendButton" onclick="sendMessage()">↑</button>
+
+    <button
+      class="send"
+      id="sendButton"
+      onclick="sendMessage()"
+    >
+      ↑
+    </button>
+
   </div>
+
 
 </div>
 
+
 <script>
 
-const chat = document.getElementById("chat");
-const input = document.getElementById("messageInput");
-const sendButton = document.getElementById("sendButton");
-const choices = document.getElementById("choices");
 
-let step = 0;
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-/* --------------------------------
-   ข้อความรัก
--------------------------------- */
+const chat =
+  document.getElementById(
+    "chat"
+  );
+
+const input =
+  document.getElementById(
+    "messageInput"
+  );
+
+const sendButton =
+  document.getElementById(
+    "sendButton"
+  );
+
+const choices =
+  document.getElementById(
+    "choices"
+  );
+
+const heartLayer =
+  document.getElementById(
+    "heartLayer"
+  );
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let isProcessing = false;
+
+let conversationStage =
+  "gift";
+
+
+/* =========================================================
+   LOVE MESSAGES
+========================================================= */
 
 const loveMessages = [
+
   "เรามาอยู่ด้วยกันไปเรื่อย ๆ เลยนะ",
+
   "เค้าอยากเดินทางไปพร้อมกับเธอในทุก ๆ ที่",
+
   "อยากมีความสุขไปพร้อมกับเธอในทุก ๆ วัน",
+
   "เรียนรู้และเติบโตไปพร้อมกับเธอ",
+
   "ไม่ว่ามันจะยากหรือลำบากแค่ไหน\nเค้าก็จะไม่มีวันปล่อยมือเธอไปเด็ดขาด",
+
   "เค้ารักเธอนะคะคุณบุ๊ค 🥹🫶🏻💕"
+
 ];
 
 
-/* --------------------------------
-   เพิ่มข้อความ
--------------------------------- */
+/* =========================================================
+   DELAY ของแต่ละ LOVE MESSAGE
+========================================================= */
 
-function addMessage(text, type = "them") {
+const loveDelays = [
 
-  const row = document.createElement("div");
-  row.className = "message-row " + type;
+  5000,  // 1. เรามาอยู่ด้วยกัน...
+  4000,  // 2. เค้าอยากเดินทาง...
+  5000,  // 3. อยากมีความสุข...
+  6000,  // 4. เรียนรู้และเติบโต...
+  5000,  // 5. ไม่ว่ามันจะยาก...
+  7000   // 6. เค้ารักเธอ...
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
-  bubble.textContent = text;
+];
 
-  row.appendChild(bubble);
-  chat.appendChild(row);
 
-  scrollBottom();
+/* =========================================================
+   RANDOM REPLIES
+========================================================= */
+
+const noReplies = [
+
+  "ไม่จริง",
+
+  "อ้วนหลอกเค้า 😞",
+
+  "แงงงงง 😭",
+
+  "อ้วนใจรว้าย 🥹",
+
+  "ฮืออออออ",
+
+  "แอแงแอ้แอ้"
+
+];
+
+
+const loveReplies = [
+
+  "รักอ้วนเหมือนกันค้าบ ที่สุดเลย 🥹🫶🏻💕",
+
+  "จุ๊บุ ๆ รักไออ้วนนนน ❤️‍🔥",
+
+  "ร้ากกกกกกกกกก",
+
+  "รักอ้วนเท่าจักรวาลลลลลลล",
+
+  "จุ๊บเค้าหน่อย"
+
+];
+
+
+const kaabReplies = [
+
+  "ค้าบเรยหลอ",
+
+  "จ้าอ้วงงงง กอด ๆ น้า",
+
+  "จุ๊บเค้าหน่อย"
+
+];
+
+
+const punReplies = [
+
+  "พุ่นหนะะะ",
+
+  "ิิ เก่งมะ",
+
+  "จ้าอ้วงงงง กอด ๆ น้า",
+
+  "จุ๊บเค้าหน่อย"
+
+];
+
+
+const jaReplies = [
+
+  "อิ้อิ้",
+
+  "จุ๊บเค้าหน่อย"
+
+];
+
+
+const heartEmojis = [
+
+  "❤️",
+  "💕",
+  "💗",
+  "💖",
+  "💓",
+  "💘",
+  "🩷",
+  "❤️‍🔥",
+  "💞",
+  "💝"
+
+];
+
+
+/* =========================================================
+   RANDOM
+========================================================= */
+
+function randomReply(array) {
+
+  return array[
+    Math.floor(
+      Math.random() *
+      array.length
+    )
+  ];
+
 }
 
 
-/* --------------------------------
-   กำลังพิมพ์
--------------------------------- */
+/* =========================================================
+   DELAY
+========================================================= */
+
+function delay(ms) {
+
+  return new Promise(
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function scrollBottom() {
+
+  requestAnimationFrame(() => {
+
+    chat.scrollTop =
+      chat.scrollHeight;
+
+  });
+
+}
+
+
+/* =========================================================
+   ADD MESSAGE
+========================================================= */
+
+function addMessage(
+  text,
+  type = "them"
+) {
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "message-row " +
+    type;
+
+
+  const bubble =
+    document.createElement(
+      "div"
+    );
+
+  bubble.className =
+    "bubble";
+
+
+  bubble.textContent =
+    text;
+
+
+  row.appendChild(
+    bubble
+  );
+
+
+  chat.appendChild(
+    row
+  );
+
+
+  scrollBottom();
+
+}
+
+
+/* =========================================================
+   TYPING
+========================================================= */
 
 function showTyping() {
 
-  const row = document.createElement("div");
-  row.className = "message-row them";
-  row.id = "typing";
+  hideTyping();
 
-  const typing = document.createElement("div");
-  typing.className = "typing";
 
-  for (let i = 0; i < 3; i++) {
-    const dot = document.createElement("div");
-    dot.className = "dot";
-    typing.appendChild(dot);
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "message-row them";
+
+  row.id =
+    "typing";
+
+
+  const typing =
+    document.createElement(
+      "div"
+    );
+
+  typing.className =
+    "typing";
+
+
+  for (
+    let i = 0;
+    i < 3;
+    i++
+  ) {
+
+    const dot =
+      document.createElement(
+        "div"
+      );
+
+    dot.className =
+      "dot";
+
+
+    typing.appendChild(
+      dot
+    );
+
   }
 
-  row.appendChild(typing);
-  chat.appendChild(row);
+
+  row.appendChild(
+    typing
+  );
+
+
+  chat.appendChild(
+    row
+  );
+
 
   scrollBottom();
+
 }
 
 
 function hideTyping() {
 
-  const typing = document.getElementById("typing");
+  const typing =
+    document.getElementById(
+      "typing"
+    );
+
 
   if (typing) {
+
     typing.remove();
+
   }
 
 }
 
 
-/* --------------------------------
-   Scroll
--------------------------------- */
+/* =========================================================
+   INPUT ENABLE / DISABLE
+========================================================= */
 
-function scrollBottom() {
-  setTimeout(() => {
-    chat.scrollTop = chat.scrollHeight;
-  }, 50);
+function setInputEnabled(
+  enabled
+) {
+
+  input.disabled =
+    !enabled;
+
+  sendButton.disabled =
+    !enabled;
+
 }
 
 
-/* --------------------------------
-   เปิดหน้า
--------------------------------- */
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
 
-window.onload = async function() {
+function createFloatingHearts() {
+
+  heartLayer.innerHTML = "";
+
+
+  const heartCount = 90;
+
+
+  for (
+    let i = 0;
+    i < heartCount;
+    i++
+  ) {
+
+    setTimeout(() => {
+
+      const heart =
+        document.createElement(
+          "div"
+        );
+
+
+      heart.className =
+        "floating-heart";
+
+
+      heart.textContent =
+        randomReply(
+          heartEmojis
+        );
+
+
+      const left =
+        Math.random() * 100;
+
+
+      const drift =
+        -140 +
+        Math.random() * 280;
+
+
+      const driftEnd =
+        -180 +
+        Math.random() * 360;
+
+
+      const size =
+        18 +
+        Math.random() * 26;
+
+
+      const duration =
+        2.8 +
+        Math.random() * 2.4;
+
+
+      const rotate =
+        -35 +
+        Math.random() * 70;
+
+
+      heart.style.left =
+        left + "%";
+
+
+      heart.style.fontSize =
+        size + "px";
+
+
+      heart.style.setProperty(
+        "--drift",
+        drift + "px"
+      );
+
+
+      heart.style.setProperty(
+        "--drift-end",
+        driftEnd + "px"
+      );
+
+
+      heart.style.setProperty(
+        "--duration",
+        duration + "s"
+      );
+
+
+      heart.style.setProperty(
+        "--rotate",
+        rotate + "deg"
+      );
+
+
+      heartLayer.appendChild(
+        heart
+      );
+
+
+      setTimeout(() => {
+
+        heart.remove();
+
+      }, duration * 1000 + 500);
+
+
+    }, i * 40);
+
+  }
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+async function startConversation() {
 
   await delay(700);
 
-  addMessage("ของขวัญน่ารักไหม");
-
-};
-
-
-/* --------------------------------
-   ส่งข้อความแรก
--------------------------------- */
-
-async function sendMessage() {
-
-  const text = input.value.trim();
-
-  if (!text) return;
-
-  /* แสดงข้อความที่คุณบุ๊คพิมพ์ */
-
-  addMessage(text, "me");
-
-  input.value = "";
-  sendButton.disabled = true;
-
-  await delay(700);
 
   showTyping();
 
-  await delay(1300);
+
+  await delay(1100);
+
 
   hideTyping();
 
+
   addMessage(
-    "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+    "ของขวัญน่ารักไหม"
   );
 
-  await delay(400);
 
-  choices.classList.remove("hidden");
-
-  sendButton.disabled = true;
-  input.disabled = true;
-
-}
+  conversationStage =
+    "gift";
 
 
-/* --------------------------------
-   เลือกคำตอบ
--------------------------------- */
+  setInputEnabled(
+    true
+  );
 
-async function choose(number) {
 
-  choices.classList.add("hidden");
-
-  let reply = "";
-
-  switch(number) {
-
-    case 1:
-      reply = "ตกลงครับ 💕";
-      break;
-
-    case 2:
-      reply = "ปฏิเสธไม่ได้แล้วครับ 🥹";
-      break;
-
-    case 3:
-      reply = "ได้เลยครับ เริ่มวันครบรอบใหม่ของเรากันนะ 🎂💕";
-      break;
-
-    case 4:
-      reply = "ยอมให้จับกุมหัวใจแต่โดยดีครับ 🚨💗";
-      break;
-
-    case 5:
-      reply = "555555 😂 จุ๊บ 😘 ตกลงเป็นแฟนกันครับ";
-      break;
-
-  }
-
-  addMessage(reply, "me");
-
-  await delay(900);
-
-  await sendLoveSequence();
+  input.focus();
 
 }
 
 
-/* --------------------------------
-   ข้อความรักต่อเนื่อง
--------------------------------- */
+/* =========================================================
+   SEND MESSAGE
+========================================================= */
 
-async function sendLoveSequence() {
-
-  for (const message of loveMessages) {
-
-    showTyping();
-
-    await delay(1100);
-
-    hideTyping();
-
-    addMessage(message);
-
-    await delay(800);
-
-  }
-
-}
-
-
-/* --------------------------------
-   Enter = ส่ง
--------------------------------- */
-
-input.addEventListener("keydown", function(event) {
-
-  if (event.key === "Enter") {
-    sendMessage();
-  }
-
-});
-
-
-/* --------------------------------
-   Delay
--------------------------------- */
-
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-  
 async function sendMessage() {
 
-  const text = input.value.trim();
+  if (isProcessing) {
+    return;
+  }
 
-  if (!text) return;
 
-  addMessage(text, "me");
+  const text =
+    input.value.trim();
+
+
+  if (!text) {
+    return;
+  }
+
+
+  isProcessing = true;
+
+
+  addMessage(
+    text,
+    "me"
+  );
+
 
   input.value = "";
-  sendButton.disabled = true;
-
-  await delay(700);
-
-  const normalized = text.replace(/\s+/g, "");
-
-  /* =========================
-     กรณีตอบว่า "ไม่รัก"
-  ========================= */
-
-  if (normalized.includes("ไม่รัก")) {
-
-    showTyping();
-
-    await delay(1200);
-
-    hideTyping();
-
-    addMessage(
-      "ไม่จริง\nอ้วนหลอกเค้า\nแงงงงง ใจร้าย 😭\nไม่รักไม่ได้ รักได้อย่างเดียว"
-    );
-
-    sendButton.disabled = false;
-    input.disabled = false;
-
-    return;
-  }
 
 
-  /* =========================
-     กรณีตอบว่า "ไม่คบ"
-  ========================= */
-
-  if (normalized.includes("ไม่คบ")) {
-
-    showTyping();
-
-    await delay(1200);
-
-    hideTyping();
-
-    addMessage(
-      "ไม่เอาาาา 🥹\nไม่คบไม่ได้ รักแล้วต้องคบสิคะ 🤏🏻💕"
-    );
-
-    sendButton.disabled = false;
-    input.disabled = false;
-
-    return;
-  }
+  setInputEnabled(
+    false
+  );
 
 
-  /* =========================
-     กรณีมีคำว่า "รัก"
-     แต่ไม่ใช่ "ไม่รัก"
-  ========================= */
+  await delay(650);
 
-  if (normalized.includes("รัก")) {
 
-    showTyping();
+  const normalized =
+    text
+      .replace(
+        /\s+/g,
+        ""
+      )
+      .toLowerCase();
 
-    await delay(1200);
 
-    hideTyping();
+  /* =======================================================
+     STAGE 1
+     ของขวัญน่ารักไหม
+  ======================================================= */
 
-    addMessage(
-      "รักอ้วนเหมือนกันค้าบ ที่สุดเลย 🥹🫶🏻💕"
-    );
+  if (
+    conversationStage ===
+    "gift"
+  ) {
 
-    await delay(900);
+    if (
+      normalized.includes(
+        "ไม่"
+      )
+    ) {
 
-    /*
-      จากตรงนี้จะให้ไปต่อเข้าคำถาม
-      ขอเป็นแฟนไหม
-    */
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        "ไม่น่ารักตรงไหน พูดออกมาว่าน่ารักเดี๋ยวเน้"
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
 
     showTyping();
 
-    await delay(1200);
+    await delay(1000);
 
     hideTyping();
+
 
     addMessage(
       "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
     );
 
+
     await delay(400);
 
-    choices.classList.remove("hidden");
 
-    input.disabled = true;
+    choices.classList.remove(
+      "hidden"
+    );
+
+
+    conversationStage =
+      "proposal";
+
+
+    isProcessing = false;
 
     return;
   }
 
 
-  /* =========================
-     คำตอบทั่วไป
-  ========================= */
+  /* =======================================================
+     STAGE 2
+     ช่วงขอเป็นแฟน
+  ======================================================= */
 
-  showTyping();
+  if (
+    conversationStage ===
+    "proposal"
+  ) {
 
-  await delay(1300);
+    if (
+      normalized.includes(
+        "ไม่"
+      )
+    ) {
 
-  hideTyping();
+      showTyping();
 
-  addMessage(
-    "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          noReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    if (
+      normalized.includes(
+        "รัก"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          loveReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    if (
+      normalized.includes(
+        "ค้าบ"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          kaabReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    showTyping();
+
+    await delay(1000);
+
+    hideTyping();
+
+
+    addMessage(
+      "น่ารักแล้วขอเป็นแฟนได้ไหมคะคุณบุ๊ค 🤏🏻"
+    );
+
+
+    isProcessing = false;
+
+    setInputEnabled(
+      true
+    );
+
+    input.focus();
+
+    return;
+  }
+
+
+  /* =======================================================
+     STAGE 3
+     หลังข้อความสุดท้าย
+  ======================================================= */
+
+  if (
+    conversationStage ===
+    "relationship"
+  ) {
+
+    /*
+      1. มีคำว่า ไม่
+    */
+
+    if (
+      normalized.includes(
+        "ไม่"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          noReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    /*
+      2. มีคำว่า รัก
+    */
+
+    if (
+      normalized.includes(
+        "รัก"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          loveReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    /*
+      3. มีคำว่า ค้าบ
+    */
+
+    if (
+      normalized.includes(
+        "ค้าบ"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          kaabReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    /*
+      4. พุ่นหนะ / ป๊าด
+    */
+
+    if (
+      normalized.includes(
+        "พุ่นหนะ"
+      ) ||
+      normalized.includes(
+        "ป๊าด"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          punReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    /*
+      5. จ้า
+    */
+
+    if (
+      normalized.includes(
+        "จ้า"
+      )
+    ) {
+
+      showTyping();
+
+      await delay(1000);
+
+      hideTyping();
+
+
+      addMessage(
+        randomReply(
+          jaReplies
+        )
+      );
+
+
+      isProcessing = false;
+
+      setInputEnabled(
+        true
+      );
+
+      input.focus();
+
+      return;
+    }
+
+
+    /*
+      6. อื่น ๆ
+    */
+
+    showTyping();
+
+    await delay(1000);
+
+    hideTyping();
+
+
+    addMessage(
+      "อะไรนะ ไม่รู้เหลือง พิมพ์มาใหม่สิ้"
+    );
+
+
+    isProcessing = false;
+
+    setInputEnabled(
+      true
+    );
+
+    input.focus();
+
+    return;
+  }
+
+}
+
+
+/* =========================================================
+   CHOICE 1–5
+========================================================= */
+
+async function choose(
+  number
+) {
+
+  if (isProcessing) {
+    return;
+  }
+
+
+  isProcessing = true;
+
+
+  choices.classList.add(
+    "hidden"
   );
 
-  await delay(400);
 
-  choices.classList.remove("hidden");
+  let reply = "";
 
-  input.disabled = true;
+
+  switch (number) {
+
+    case 1:
+
+      reply =
+        "กด 1️⃣ เพื่อตอบตกลงเป็นแฟนกัน 🫡";
+
+      break;
+
+
+    case 2:
+
+      reply =
+        "กด 2️⃣ เพื่อไม่ปฏิเสธ 🙅🏻";
+
+      break;
+
+
+    case 3:
+
+      reply =
+        "กด 3️⃣ เพื่อคบกัน start วันครบรอบใหม่ 💕";
+
+      break;
+
+
+    case 4:
+
+      reply =
+        "กด 4️⃣ เพื่อโดนจับกุมหัวใจ 🚨";
+
+      break;
+
+
+    case 5:
+
+      reply =
+        "กด 55555 เพื่อหัวเราะแล้วจุ๊บเพื่อเป็นแฟนกัน 😘";
+
+      break;
+
+  }
+
+
+  addMessage(
+    reply,
+    "me"
+  );
+
+
+  await delay(900);
+
+
+  /* =======================================================
+     LOVE SEQUENCE
+  ======================================================= */
+
+  for (
+    let i = 0;
+    i < loveMessages.length;
+    i++
+  ) {
+
+    /*
+      แสดง typing
+    */
+
+    showTyping();
+
+
+    /*
+      ใช้ delay ของแต่ละข้อความ
+    */
+
+    await delay(
+      loveDelays[i]
+    );
+
+
+    hideTyping();
+
+
+    /*
+      แสดงข้อความ
+    */
+
+    addMessage(
+      loveMessages[i]
+    );
+
+
+    /*
+      ถ้าเป็นข้อความสุดท้าย
+    */
+
+    if (
+      i ===
+      loveMessages.length - 1
+    ) {
+
+      await delay(250);
+
+
+      /*
+        หัวใจลอยเต็มจอ
+      */
+
+      createFloatingHearts();
+
+
+      /*
+        รอให้หัวใจเริ่ม animation
+      */
+
+      await delay(1800);
+
+    }
+
+
+    /*
+      เว้นจังหวะเล็กน้อย
+      ก่อนเริ่มข้อความถัดไป
+    */
+
+    if (
+      i <
+      loveMessages.length - 1
+    ) {
+
+      await delay(500);
+
+    }
+
+  }
+
+
+  /*
+    เปิดระบบตอบกลับหลังจบ
+  */
+
+  conversationStage =
+    "relationship";
+
+
+  isProcessing = false;
+
+
+  setInputEnabled(
+    true
+  );
+
+
+  input.focus();
+
 }
-</script>
 
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+input.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   START APP
+========================================================= */
+
+startConversation();
+
+
+</script>
 
 </body>
 </html>
